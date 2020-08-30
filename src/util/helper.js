@@ -1,3 +1,17 @@
+const Greetings = [
+    "g'day",
+    'hello',
+    'hi',
+    'hey',
+    'hiya',
+    'howdy',
+    'sup',
+    'wassup',
+    'yo',
+];
+
+const Commands = ['kick', 'ban', 'say', 'announce'];
+
 const Functions = {
     // checks if the user is kickable and
     // kick them async
@@ -39,4 +53,4 @@ const Functions = {
     },
 };
 
-module.exports = { Functions };
+module.exports = { Greetings, Commands, Functions };

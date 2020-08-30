@@ -1,7 +1,6 @@
 require('dotenv').config();
-const { Client } = require('discord.js');
-const { Greetings, Commands } = require('./keywords');
-const { Functions } = require('./util/helper');
+const { Client, WebhookClient } = require('discord.js');
+const { Greetings, Commands, Functions } = require('./util/helper');
 
 // discord.js uses cached set of data,
 // beginning from when the bot was last online.
@@ -9,6 +8,10 @@ const { Functions } = require('./util/helper');
 const client = new Client({
     partials: ['MESSAGE', 'REACTION'],
 });
+const webhookClient = new WebhookClient(
+    process.env.WEBHOOK_ID,
+    process.env.WEBHOOK_TOKEN
+);
 const PREFIX = '%';
 
 // login
@@ -61,6 +64,9 @@ client.on('message', (message) => {
                             break;
                         case 'say':
                             message.channel.send(args.join(' '));
+                            break;
+                        case 'announce':
+                            webhookClient.send(args.join(' '));
                             break;
                         default:
                             console.log(
