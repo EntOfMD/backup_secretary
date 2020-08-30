@@ -3,20 +3,25 @@ const { Client } = require('discord.js');
 const { Greetings, Commands } = require('./keywords');
 const { Functions } = require('./util/helper');
 
-const client = new Client();
+// discord.js uses cached set of data,
+// beginning from when the bot was last online.
+// use partials to access data that isn't cached.
+const client = new Client({
+    partials: ['MESSAGE', 'REACTION'],
+});
 const PREFIX = '%';
 
 // login
+client.login(process.env.BOT_TOKEN);
 client.on('ready', () => {
     console.log(`${client.user.tag} is ready`);
 });
-client.login(process.env.BOT_TOKEN);
 
 // message event listener
 client.on('message', (message) => {
     const CONTENT = message.content;
 
-    // console.log(`[${message.author.tag}: ${CONTENT}]`);
+    console.log(`[${message.author.tag}: ${CONTENT}]`);
 
     // mitigating counting bot's own reply
     // to avoid a loop
@@ -69,6 +74,54 @@ client.on('message', (message) => {
                     "can't follow through homie, didn't catch that last part"
                 );
             }
+        }
+    }
+});
+
+// reaction event listener
+// ADD role
+client.on('messageReactionAdd', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+
+    if (reaction.message.id === '749711465665003732') {
+        switch (name) {
+            //golang 749704008876294229
+            case '🐉':
+                member.roles.add('749704008876294229');
+                console.log('Added Go role to', user.id);
+                break;
+            //javascript 749704270927888425
+            case '🍌':
+                member.roles.add('749704270927888425');
+                console.log('Added JS role to', user.id);
+                break;
+            default:
+                break;
+        }
+    }
+});
+
+// reaction event listener
+// REMOVE role
+client.on('messageReactionRemove', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+
+    if (reaction.message.id === '749711465665003732') {
+        switch (name) {
+            //golang 749704008876294229
+            case '🐉':
+                member.roles.remove('749704008876294229');
+                console.log('Removed Go role from', user.id);
+                break;
+            //javascript 749704270927888425
+            case '🍌':
+                member.roles.remove('749704270927888425');
+                console.log('Removed JS role from', user.id);
+                break;
+            default:
+                break;
         }
     }
 });
