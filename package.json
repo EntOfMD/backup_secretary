@@ -1,0 +1,24 @@
+{
+    "name": "disord-bot",
+    "version": "0.1.0",
+    "description": "a discord bot with NodeJS",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node ./src/index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/EntOfMD/discord-bot.git"
+    },
+    "keywords": [],
+    "author": "Ashell Fernando",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/EntOfMD/discord-bot/issues"
+    },
+    "homepage": "https://github.com/EntOfMD/discord-bot#readme",
+    "dependencies": {
+        "discord.js": "^12.3.1",
+        "dotenv": "^8.2.0"
+    }
+}
