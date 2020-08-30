@@ -13,3 +13,5 @@ Create a .env file in the project root and add variables
 -   `WEBHOOK_TOKEN` assign the webhook's token
 
 Join my test server! https://discord.gg/gBPYWQs
+
+To add this bot to your server, follow this link: https://discord.com/api/oauth2/authorize?client_id=DISCORD_APPLICATION_CLIENT_ID&scope=bot
