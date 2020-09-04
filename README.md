@@ -23,7 +23,7 @@
 
 ## Environment
 
-- Create a .env file in the project root and add variables
+- Add these variables to your "bash profile"
 
 - `BOT_TOKEN` and assign the discord API key
 - `GITHUB_WEBHOOK_ID` and assign discord's webhook ID that is also assigned to github
