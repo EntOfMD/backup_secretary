@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  backupsecretary:
+    container_name: backupsecretary
+    build:
+      context: ./
+      dockerfile: ./Docker/Dockerfile
+    restart: always

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { Client, WebhookClient } = require("discord.js");
 const { Greetings, Commands, Functions, Constants } = require("./util/helper");
 
