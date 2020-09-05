@@ -5,5 +5,5 @@ services:
     container_name: backupsecretary
     build:
       context: ./
-      dockerfile: ./Docker/Dockerfile
+      dockerfile: ./src/Docker/Dockerfile
     restart: always
