@@ -1,6 +1,6 @@
 const { Client, WebhookClient, MessageEmbed } = require("discord.js");
-const { Greetings, Commands, Functions, Constants } = require("./util/helper");
-const path = require("path");
+const { Functions } = require("./util/functions");
+const { Constants, Greetings, Commands } = require("./util/constants");
 
 // discord.js uses cached set of data,
 // beginning from when the bot was last online.
@@ -167,3 +167,15 @@ client.on("messageReactionRemove", (reaction, user) => {
 // 		}
 // 	}
 // });
+
+// When a new member joins
+client.on("guildMemberAdd", (member) => {
+	// Send the message to a designated channel on a server:
+	const channel = member.guild.channels.cache.find(
+		(ch) => ch.name === "bot-dev"
+	);
+	// Do nothing if the channel wasn't found on this server
+	if (!channel) return;
+	// Send the message, mentioning the member
+	channel.send(`Welcome to the server, ${member}`);
+});
