@@ -179,3 +179,7 @@ client.on("guildMemberAdd", (member) => {
 	// Send the message, mentioning the member
 	channel.send(`Welcome to the server, ${member}`);
 });
+
+client.on("disconnect", () => {
+	console.log("disconnected");
+});

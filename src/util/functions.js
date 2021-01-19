@@ -42,6 +42,9 @@ const Functions = {
 			return message.reply("Available commands:\n" + Commands);
 		}
 	},
+	splitLines: (s) => {
+		return s.split(/\r\n|\r|\n/);
+	},
 };
 
 module.exports = { Functions };
