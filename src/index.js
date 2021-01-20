@@ -17,7 +17,17 @@ const PREFIX = "%";
 // login
 client.login(Constants.env.BOT_TOKEN);
 client.on("ready", () => {
-	console.log(`${client.user.tag} is ready`);
+	client.user
+		.setActivity("%help", {
+			type: "LISTENING",
+			url: "https://entofmd.io",
+		})
+		.then((presence) => {
+			if (presence.status === "online") {
+				console.log(`${client.user.tag} is ready`);
+			}
+		})
+		.catch(console.error);
 });
 
 // message event listener
@@ -77,6 +87,7 @@ client.on("message", (message) => {
 					case "commands":
 					case "help":
 						Functions.listCommands(message);
+						message.react("☑️");
 						break;
 					default:
 						console.log("command received, could not parse command");

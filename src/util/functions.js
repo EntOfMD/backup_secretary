@@ -1,3 +1,5 @@
+const { Commands } = require("./constants");
+
 const Functions = {
 	// checks if the user is kickable and
 	// kick them async
@@ -38,7 +40,6 @@ const Functions = {
 	// returns a list of commands
 	listCommands: (message) => {
 		if (message) {
-			test = [``];
 			return message.reply("Available commands:\n" + Commands);
 		}
 	},
